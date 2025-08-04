@@ -1,12 +1,15 @@
-import './Nav.css';
-import { Link } from "react-router-dom";
+import './nav.css';
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ({ regions }) => {
-  return (
+   const { pathname } = useLocation();
+   const regionFromRoute = pathname.replace('_', ' ').substring(1);
+
+   return (
     <nav className="Navbar">
-      <Link to="/" style={{}}>Home</Link>
+      <Link to="/" className={regionFromRoute ? '' : 'active'} style={{}}>Home</Link>
         {regions.map((region) => {
-          return <Link to="/about" style={{}}>{region}</Link>
+          return <Link to={`/${region.replace(' ', '_')}`} className={regionFromRoute === region ? 'active': ''}>{region}</Link>
         })}
     </nav>
   );

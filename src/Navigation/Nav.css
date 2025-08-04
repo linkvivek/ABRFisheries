@@ -18,3 +18,11 @@ a:hover {
     border-radius: 10px;
     background-color: aliceblue;
 }
+
+.active {
+  color: white;
+  background-color: #007bff;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: bold;
+}
