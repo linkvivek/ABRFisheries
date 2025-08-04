@@ -21,16 +21,10 @@ figure {
 img {
   width: 100%;
   display: block;
-  border: 1px black;
 }
 
 figcaption {
   padding: 10px;
-}
-
-h3 {
-  margin: 0 0 5px;
-  font-size: 1.1rem;
 }
 
 p {
@@ -39,16 +33,21 @@ p {
   color: #555;
 }
 
-.desc ul {
+h1 {
+  color: rgb(26, 33, 109);
+  text-align: center;
+}
+
+.description ul {
     padding: 0;
 }
 
-.desc ul li {
+.description ul li {
     padding: 5px;
     margin: 5px;
 }
 
-.avgInfo {
+.avg-info {
     display: flex;
     align-items: center;
     height: 50px;

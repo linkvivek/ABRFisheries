@@ -1,36 +1,32 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import './App.css';
 import NavBar from'./Navigation/NavBar';
 import { DataContext } from './DataContext';
+import { mapToRegions } from './utils';
 
 function App() {
-  const { fisheriesData, setFisheriesData } = useContext(DataContext);
+  const [error, setError] = useState(false);
+  const { setFisheriesData } = useContext(DataContext);
 
   useEffect(() => {
     fetch('http://localhost:5001/gofish?apikey=abrradiology')
     .then(res => res.json())
     .then(data => {
-      const groupedByRegion = data.reduce((acc, fishObj) => {
-        const key = fishObj.NOAAFisheriesRegion;
-        if (!acc[key]) {
-              acc[key] = { fish: [], totalFat: 0, totalCalories: 0 };
-          }
-
-        acc[key].fish.push(fishObj);
-        if (!!fishObj.FatTotal) acc[key].totalFat += parseFloat(fishObj.FatTotal);
-        if (!!fishObj.Calories) acc[key].totalCalories += parseFloat(fishObj.Calories);
-        return acc;
-      }, {});
-
+      const groupedByRegion = mapToRegions(data);
       setFisheriesData(groupedByRegion);
+      console.log('groupedByRegion===', groupedByRegion);
+    })
+    .catch(() => {
+      setError(true);
     })
   }, []);
 
-  const regions = Object.keys(fisheriesData);
-
   return (
     <div className="App">
-      <NavBar regions={regions} />
+      {error ?
+        <div style={{ color: 'red' }}>Something went wrong!</div> :
+        <NavBar />
+      }
     </div>
   );
 }

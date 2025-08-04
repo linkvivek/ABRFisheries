@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const DataContext = createContext(null);
+export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const [fisheriesData, setFisheriesData] = useState({});

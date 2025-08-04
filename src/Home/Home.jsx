@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import { DataContext } from '../DataContext';
 import './home.css';
 
@@ -11,13 +10,11 @@ const Home = () => {
 
     return (
       <table>
-      {/* <caption>Team Members</caption> */}
+      <caption>Fisheries Regional Data</caption>
         <thead>
-          <tr>
-            <th>Region</th>
-            <th>Average Fat</th>
-            <th>Average Calories</th>
-          </tr>
+          <th>Region</th>
+          <th>Average Fat</th>
+          <th>Average Calories</th>
         </thead>
         <tbody>
             {regions.map((region) => {
@@ -25,7 +22,7 @@ const Home = () => {
                 return (
                   <tr>
                     <td>{region}</td>
-                    <td>{getAverageValue(fisheriesData[region].totalFat, totalFish)}</td>
+                    <td>{getAverageValue(fisheriesData[region].totalFat, totalFish) + ' g'}</td>
                     <td>{getAverageValue(fisheriesData[region].totalCalories, totalFish)}</td>
                   </tr>
                 )

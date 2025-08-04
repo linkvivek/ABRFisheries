@@ -3,13 +3,12 @@ import Home from './Home/Home';
 import Region from './Regions/Region';
 
 const NavRoutes = () => {
-    return (
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/:region" element={<Region />} />
-          </Routes>
-
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/:region" element={<Region />} />
+    </Routes>
+  );
 };
 
 export default NavRoutes;
